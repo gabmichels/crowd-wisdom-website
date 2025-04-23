@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import HeroSection from '../components/HeroSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import ClaroSection from '../components/ClaroSection.astro';
+import CollaborationSection from '../components/ServicesSection.astro';
+import ContactSection from '../components/WorkWithMeSection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Crowd Wisdom | Claro AI">
+  <Navigation />
+  <main>
+    <HeroSection />
+    <ClaroSection />
+    <AboutSection />
+    <CollaborationSection />
+    <ContactSection />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    width: 100%;
+  }
+</style> 

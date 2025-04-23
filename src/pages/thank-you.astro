@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Thank You | Crowd Wisdom">
+  <Navigation />
+  <main class="thank-you-container">
+    <div class="thank-you-content">
+      <h1>Thank You!</h1>
+      <p>Your message has been sent successfully. We'll get back to you as soon as possible.</p>
+      <a href="/" class="home-btn">Back to Home</a>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .thank-you-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: var(--bg-color);
+  }
+
+  .thank-you-content {
+    max-width: 600px;
+    text-align: center;
+    padding: 3rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .home-btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+
+  .home-btn:hover {
+    background-color: #704513;
+  }
+</style> 

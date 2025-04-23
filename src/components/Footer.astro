@@ -1,0 +1,126 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="/cw_fulltext.svg" alt="Crowd Wisdom" height="40" />
+      </div>
+      
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="#claro">Claro AI</a></li>
+            <li><a href="#about">About CW</a></li>
+            <li><a href="#collaboration">Collaboration</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Connect</h3>
+          <ul>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="https://www.linkedin.com/in/mindthegab/">LinkedIn</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:contact@crowd-wisdom.com">contact@crowd-wisdom.com</a></li>
+            <li>Crowd Wisdom SL</li>
+            <li>Rambla de Catalunya 38, 8-1</li>
+            <li>08007 Barcelona</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; {new Date().getFullYear()} Crowd Wisdom. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--text-color);
+    color: white;
+    padding: 4rem 2rem 2rem;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+  
+  .footer-logo {
+    margin-bottom: 2rem;
+  }
+  
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+  }
+  
+  .footer-column h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+  
+  .footer-column ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-column li {
+    margin-bottom: 0.75rem;
+  }
+  
+  .footer-column a {
+    color: #CCC;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-column a:hover {
+    color: white;
+  }
+  
+  .copyright {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #AAA;
+  }
+  
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+    }
+    
+    .footer-links {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+</style> 

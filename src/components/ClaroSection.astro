@@ -1,0 +1,313 @@
+<section id="claro" class="claro-section">
+  <div class="container">
+    <h2>CLARO AI</h2>
+    
+    <div class="carousel-container">
+      <div class="carousel">
+        <div class="carousel-item">
+          <img src="/features/1.jpg" alt="Claro AI Feature 1" />
+        </div>
+        <div class="carousel-item">
+          <img src="/features/2.jpg" alt="Claro AI Feature 2" />
+        </div>
+        <div class="carousel-item">
+          <img src="/features/3.jpg" alt="Claro AI Feature 3" />
+        </div>
+        <div class="carousel-item">
+          <img src="/features/4.jpg" alt="Claro AI Feature 4" />
+        </div>
+        <div class="carousel-item">
+          <img src="/features/5.jpg" alt="Claro AI Feature 5" />
+        </div>
+      </div>
+      
+      <div class="carousel-dots">
+        <!-- Dots will be inserted by JavaScript -->
+      </div>
+    </div>
+    
+    <div class="claro-link">
+      <a href="https://www.allclaro.com" target="_blank" rel="noopener">For more information visit www.allclaro.com</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Carousel functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.carousel');
+    const items = document.querySelectorAll('.carousel-item');
+    const dotsContainer = document.querySelector('.carousel-dots');
+    const totalItems = items.length;
+    let currentIndex = 0;
+    let interval;
+    
+    // Create dots
+    items.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.classList.add('carousel-dot');
+      dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+    
+    const dots = document.querySelectorAll('.carousel-dot');
+    
+    // Initialize carousel
+    function setupCarousel() {
+      // Position items
+      updateCarousel();
+      
+      // Start autoplay
+      startAutoplay();
+      
+      // Add click event to carousel items
+      items.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          // If it's not the active item, go to that slide
+          if (index !== currentIndex) {
+            goToSlide(index);
+          }
+        });
+        
+        // Add cursor style to show item is clickable
+        item.style.cursor = 'pointer';
+      });
+      
+      // Pause autoplay on hover
+      carousel.addEventListener('mouseenter', () => clearInterval(interval));
+      carousel.addEventListener('mouseleave', () => startAutoplay());
+    }
+    
+    function updateCarousel() {
+      // Update item positions and visuals
+      items.forEach((item, index) => {
+        // Calculate position relative to current index
+        let position = index - currentIndex;
+        
+        // Handle looping
+        if (position < -2) position += totalItems;
+        if (position > 2) position -= totalItems;
+        
+        // Reset classes
+        item.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next');
+        
+        // Apply appropriate class based on position
+        if (position === 0) {
+          item.classList.add('active');
+        } else if (position === -1 || position === totalItems - 1) {
+          item.classList.add('prev');
+        } else if (position === 1 || position === -(totalItems - 1)) {
+          item.classList.add('next');
+        } else if (position === -2 || position === totalItems - 2) {
+          item.classList.add('far-prev');
+        } else if (position === 2 || position === -(totalItems - 2)) {
+          item.classList.add('far-next');
+        }
+      });
+      
+      // Update active dot
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+    }
+    
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % totalItems;
+      updateCarousel();
+    }
+    
+    function goToSlide(index) {
+      currentIndex = index;
+      updateCarousel();
+      
+      // Reset autoplay timer when manually changing slides
+      clearInterval(interval);
+      startAutoplay();
+    }
+    
+    function startAutoplay() {
+      clearInterval(interval);
+      interval = setInterval(nextSlide, 5000);
+    }
+    
+    // Initialize the carousel
+    setupCarousel();
+  });
+</script>
+
+<style>
+  .claro-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: var(--bg-color);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+  
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 65vh;
+    max-height: 600px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+  
+  .carousel {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    perspective: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .carousel-item {
+    position: absolute;
+    width: 230px;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Active (center) item */
+  .carousel-item.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 5;
+    transform: translateX(0) scale(1);
+  }
+  
+  /* Adjacent items (left and right) */
+  .carousel-item.prev {
+    opacity: 0.7;
+    visibility: visible;
+    z-index: 4;
+    transform: translateX(-245px) scale(0.85);
+  }
+  
+  .carousel-item.next {
+    opacity: 0.7;
+    visibility: visible;
+    z-index: 4;
+    transform: translateX(245px) scale(0.85);
+  }
+  
+  /* Far items (not visible but prepped) */
+  .carousel-item.far-prev {
+    opacity: 0.3;
+    visibility: visible;
+    z-index: 3;
+    transform: translateX(-420px) scale(0.7);
+  }
+  
+  .carousel-item.far-next {
+    opacity: 0.3;
+    visibility: visible;
+    z-index: 3;
+    transform: translateX(420px) scale(0.7);
+  }
+  
+  /* Dots navigation */
+  .carousel-dots {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 10;
+  }
+  
+  .carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease;
+  }
+  
+  .carousel-dot.active {
+    background-color: var(--accent-color);
+  }
+  
+  @media (max-width: 992px) {
+    .carousel-item {
+      width: 190px;
+    }
+    
+    .carousel-item.prev {
+      transform: translateX(-205px) scale(0.85);
+    }
+    
+    .carousel-item.next {
+      transform: translateX(205px) scale(0.85);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .carousel-container {
+      height: 50vh;
+      max-height: 450px;
+    }
+    
+    .carousel-item {
+      width: 160px;
+    }
+    
+    .carousel-item.prev {
+      transform: translateX(-170px) scale(0.85);
+    }
+    
+    .carousel-item.next {
+      transform: translateX(170px) scale(0.85);
+    }
+  }
+  
+  .claro-link {
+    text-align: center;
+    margin-top: 3.5rem;
+  }
+  
+  .claro-link a {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .claro-link a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+</style> 

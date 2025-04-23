@@ -1,0 +1,104 @@
+<section id="contact" class="contact-section">
+  <div class="container">
+    <h2>CONTACT US</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    
+    <div class="contact-form">
+      <form action="https://formsubmit.co/gab@crowd-wisdom.com" method="POST">
+        <!-- FormSubmit configuration -->
+        <input type="hidden" name="_subject" value="New contact from Crowd Wisdom Website">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://crowdwisdom.ai/thank-you">
+        
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: var(--bg-color);
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+  
+  .contact-form {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+  }
+  
+  .submit-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .submit-btn:hover {
+    background-color: #704513;
+  }
+</style> 

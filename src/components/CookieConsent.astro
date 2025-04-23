@@ -1,0 +1,311 @@
+<div id="cookie-consent" class="cookie-banner hidden">
+  <div class="cookie-content">
+    <div class="cookie-text">
+      <h3>We use cookies</h3>
+      <p>This website uses cookies to improve your experience and to analyze our traffic. We also share information about your use of our site with our analytics partners. By clicking "Accept All", you consent to our use of cookies.</p>
+    </div>
+    <div class="cookie-buttons">
+      <button id="cookie-customize" class="btn btn-secondary">Customize</button>
+      <button id="cookie-accept" class="btn btn-primary">Accept All</button>
+    </div>
+  </div>
+  
+  <div id="cookie-settings" class="cookie-settings hidden">
+    <div class="cookie-options">
+      <div class="cookie-option">
+        <label class="toggle">
+          <input type="checkbox" id="essential-cookies" checked disabled>
+          <span class="slider"></span>
+        </label>
+        <div class="option-desc">
+          <strong>Essential Cookies</strong>
+          <p>These cookies are necessary for the website to function properly and cannot be disabled.</p>
+        </div>
+      </div>
+      
+      <div class="cookie-option">
+        <label class="toggle">
+          <input type="checkbox" id="analytics-cookies" checked>
+          <span class="slider"></span>
+        </label>
+        <div class="option-desc">
+          <strong>Analytics Cookies</strong>
+          <p>These cookies help us improve our website by collecting anonymous information about how you use it.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="settings-buttons">
+      <button id="save-preferences" class="btn btn-primary">Save Preferences</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cookieBanner = document.getElementById('cookie-consent');
+    const customizeBtn = document.getElementById('cookie-customize');
+    const acceptAllBtn = document.getElementById('cookie-accept');
+    const cookieSettings = document.getElementById('cookie-settings');
+    const savePreferencesBtn = document.getElementById('save-preferences');
+    const analyticsCookies = document.getElementById('analytics-cookies');
+    
+    // Check if user has already set cookie preferences
+    const cookiePreferences = localStorage.getItem('cookie-preferences');
+    
+    if (!cookiePreferences) {
+      // Show cookie banner if preferences not set
+      setTimeout(() => {
+        cookieBanner.classList.remove('hidden');
+      }, 1000);
+    } else {
+      // Apply saved preferences
+      const preferences = JSON.parse(cookiePreferences);
+      if (preferences.analytics) {
+        enableAnalytics();
+      }
+    }
+    
+    // Accept all cookies
+    acceptAllBtn.addEventListener('click', () => {
+      savePreferences(true);
+      cookieBanner.classList.add('hidden');
+    });
+    
+    // Show customize options
+    customizeBtn.addEventListener('click', () => {
+      cookieSettings.classList.toggle('hidden');
+    });
+    
+    // Save custom preferences
+    savePreferencesBtn.addEventListener('click', () => {
+      const analyticsEnabled = analyticsCookies.checked;
+      savePreferences(analyticsEnabled);
+      cookieBanner.classList.add('hidden');
+      cookieSettings.classList.add('hidden');
+    });
+    
+    // Save preferences to localStorage
+    function savePreferences(analyticsEnabled) {
+      const preferences = {
+        essential: true,
+        analytics: analyticsEnabled
+      };
+      
+      localStorage.setItem('cookie-preferences', JSON.stringify(preferences));
+      
+      if (analyticsEnabled) {
+        enableAnalytics();
+      }
+    }
+    
+    // Enable Google Analytics
+    function enableAnalytics() {
+      // GA4 implementation will go here
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'update', {
+        'analytics_storage': 'granted'
+      });
+      
+      // Load GA script
+      const script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX'; // Replace with your GA4 Measurement ID
+      script.async = true;
+      document.head.appendChild(script);
+      
+      script.onload = () => {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX'); // Replace with your GA4 Measurement ID
+      };
+    }
+  });
+</script>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    transition: transform 0.3s ease;
+  }
+  
+  .cookie-banner.hidden {
+    transform: translateY(100%);
+  }
+  
+  .cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .cookie-text {
+    flex: 1;
+  }
+  
+  .cookie-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+  }
+  
+  .cookie-text p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  .cookie-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border: none;
+  }
+  
+  .btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #8F582A;
+  }
+  
+  .btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .cookie-settings {
+    max-width: 1200px;
+    margin: 1rem auto 0;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+  
+  .cookie-settings.hidden {
+    display: none;
+  }
+  
+  .cookie-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cookie-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .option-desc {
+    flex: 1;
+  }
+  
+  .option-desc strong {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: #333;
+  }
+  
+  .option-desc p {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+  }
+  
+  .toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+  }
+  
+  .toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 26px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: var(--accent-color);
+  }
+  
+  input:disabled + .slider {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(24px);
+  }
+  
+  .settings-buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  @media (max-width: 768px) {
+    .cookie-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .cookie-buttons {
+      align-self: flex-end;
+    }
+  }
+</style> 

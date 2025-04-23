@@ -1,0 +1,81 @@
+<nav class="nav-container">
+  <div class="logo">
+    <a href="#" id="logo-link">
+      <img src="/cw_fulltext.svg" alt="Crowd Wisdom" />
+    </a>
+  </div>
+  <div class="nav-links">
+    <a href="#claro">CLARO AI</a>
+    <a href="#about">ABOUT CW</a>
+    <a href="#collaboration">COLLABORATION</a>
+    <a href="#contact">CONTACT US</a>
+  </div>
+</nav>
+
+<script>
+  // Scroll to top when logo is clicked
+  document.getElementById('logo-link').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
+<style>
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+  
+  .logo img {
+    height: 3.5rem; /* Increased from 2.5rem */
+    transition: transform 0.3s ease;
+  }
+  
+  .logo img:hover {
+    transform: scale(1.05);
+  }
+  
+  .logo a {
+    display: block;
+    cursor: pointer;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    opacity: 0.7;
+  }
+  
+  @media (max-width: 768px) {
+    .nav-container {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .nav-links {
+      gap: 1rem;
+      font-size: 0.8rem;
+    }
+  }
+</style> 

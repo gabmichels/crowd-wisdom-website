@@ -1,0 +1,126 @@
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">CLARO AI IS OUT NOW</h1>
+      <p class="hero-subtitle">Your conversation-first translator</p>
+      
+      <div class="app-buttons">
+        <a href="https://play.google.com/store/apps/details?id=ai.allclaro.app" class="app-button" target="_blank">
+          <img src="/google-play-badge.png" alt="Get it on Google Play" />
+        </a>
+        <a href="https://apps.apple.com/es/app/claro-ai/id6741551736?l=en-GB" class="app-button" target="_blank">
+          <img src="/app-store-badge.png" alt="Download on App Store" />
+        </a>
+      </div>
+    </div>
+    
+    <div class="work-teaser">
+      <p>HOW DOES CLARO WORK?</p>
+      <div class="arrow-down">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    min-height: 100vh;
+    background-image: url('/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    position: relative;
+  }
+  
+  .container {
+    width: 100%;
+    padding: 6rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  .hero-content {
+    width: 50%;
+    text-align: center;
+    margin-top: -100px;
+  }
+  
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: 2.5rem;
+  }
+  
+  .app-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .app-button img {
+    height: 3rem;
+  }
+  
+  .work-teaser {
+    position: absolute;
+    bottom: 2rem;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .work-teaser p {
+    font-weight: 600;
+  }
+  
+  .arrow-down {
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding-top: 8rem;
+    }
+    
+    .hero-content {
+      width: 100%;
+      margin-top: -50px;
+    }
+    
+    .work-teaser {
+      position: relative;
+      bottom: auto;
+      width: 100%;
+      margin-top: 4rem;
+    }
+  }
+</style> 
