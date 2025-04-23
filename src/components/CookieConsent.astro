@@ -305,7 +305,30 @@
     }
     
     .cookie-buttons {
-      align-self: flex-end;
+      align-self: flex-start;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .btn {
+      min-width: 45%;
+      text-align: center;
+      padding: 0.8rem 1rem;
+    }
+    
+    .cookie-banner {
+      padding: 1.5rem;
+      z-index: 10000; /* Ensure it's above everything */
+    }
+    
+    .settings-buttons {
+      width: 100%;
+    }
+    
+    #save-preferences {
+      width: 100%;
+      padding: 0.8rem 1rem;
     }
   }
 </style> 
